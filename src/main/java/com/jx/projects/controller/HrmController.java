@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.jx.projects.entiy.WagesItem;
@@ -36,7 +37,7 @@ public class HrmController {
 	
 	/** 导入excel */
 	@RequestMapping("/getExcel")
-	public String getExcel(@RequestParam("file")CommonsMultipartFile file,HttpSession session,Model model){
+	public String getExcel(@RequestParam("fileName")MultipartFile file,HttpSession session,Model model){
 		try {
 			// 获取excel文件输入流
 			InputStream in = file.getInputStream();
@@ -46,7 +47,8 @@ public class HrmController {
 			session.setAttribute(PayConstants.session_wagesItem, wagesItems);
 			model.addAttribute(PayConstants.message, "导入Excel成功！");
 		} catch (Exception e) {
-			model.addAttribute(PayConstants.message, e.getMessage());
+			e.printStackTrace();
+			model.addAttribute(PayConstants.message, "导入excel失败！");
 		}
 		return "/hrm/calcWages";
 	}

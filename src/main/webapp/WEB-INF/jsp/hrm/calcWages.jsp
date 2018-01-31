@@ -247,7 +247,7 @@
 		</div>
 		
 		<form id="getExcelForm" method="post" action="${ctx}/hrm/getExcel" enctype="multipart/form-data" style="display: none;">
-			<input type="file" id="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onchange="javascript:$('#getExcelForm').submit();"/>
+			<input type="file" id="file" name="fileName" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onchange="javascript:$('#getExcelForm').submit();"/>
 		</form>
 	
 </body>

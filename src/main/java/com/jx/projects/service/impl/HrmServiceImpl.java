@@ -33,7 +33,7 @@ public class HrmServiceImpl implements HrmService{
 			return wagesItems;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new PayException("导入excel失败！");
+			throw new PayException();
 		}
 	}
 

@@ -1,0 +1,13 @@
+/target/
+.settings/org.eclipse.wst.validation.prefs
+.settings/org.eclipse.wst.jsdt.ui.superType.name
+.settings/org.eclipse.jdt.core.prefs
+.project
+.classpath
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.wst.common.component
+.gitignore
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.m2e.core.prefs
+.settings/.jsdtscope
+.settings/org.eclipse.wst.jsdt.ui.superType.container

@@ -3,6 +3,7 @@ package com.jx.projects;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Configuration
 @ComponentScan(basePackages="com.jx") //默认扫描是当前包下的路径
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class}) 
 public class App extends SpringBootServletInitializer{
 	
 	@Override
