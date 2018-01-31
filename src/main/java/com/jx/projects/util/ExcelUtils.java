@@ -106,6 +106,7 @@ public class ExcelUtils {
 		for (Object object : list) {
 			System.out.println(object);
 		}
+		wb.close();
 		return list;
 	}
 

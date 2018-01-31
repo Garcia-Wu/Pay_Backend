@@ -1,6 +1,5 @@
 package com.jx.projects.entiy;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,10 +14,8 @@ import javax.persistence.TemporalType;
 /** 工资明细类 */
 @Entity
 @Table(name="pay_hrm_employee")
-public class WagesItem implements Serializable{
+public class WagesItem{
 
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;

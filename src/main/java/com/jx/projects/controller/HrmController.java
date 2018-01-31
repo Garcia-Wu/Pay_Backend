@@ -4,18 +4,18 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.jx.projects.entiy.WagesItem;
 import com.jx.projects.service.HrmService;
-import com.jx.projects.util.PageWagesItem;
 import com.jx.projects.util.PayConstants;
 
 /**
@@ -63,7 +63,7 @@ public class HrmController {
 			String index = trId.substring(trId.indexOf("_") + 1);
 			// 获取对应的wagesItem
 			WagesItem wagesItem = wagesItems.get(Integer.valueOf(index));
-			model.addAttribute("wagesItem", wagesItem);
+			model.addAttribute("item", wagesItem);
 			model.addAttribute("index", index);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,15 +74,14 @@ public class HrmController {
 	
 	/** 修改工资信息 */
 	@RequestMapping("/updateWages")
-	public String updateWages(String index,PageWagesItem pageWagesItem,HttpSession session,Model model){
+	public String updateWages(String index,@Valid WagesItem wagesItem, BindingResult bindingResult, HttpSession session,Model model){
 		try {
-			@SuppressWarnings("unchecked")
 			List<WagesItem> wagesItems = (List<WagesItem>) session.getAttribute(PayConstants.session_wagesItem);
 			// 从session集合中取出对应的对象
-			WagesItem wagesItem = wagesItems.get(Integer.valueOf(index));
+			WagesItem sessionItem = wagesItems.get(Integer.valueOf(index));
 			// 获取信息，进行计算工资
-			hrmService.calcWages(wagesItem,pageWagesItem);
-			model.addAttribute("wagesItem", wagesItem);
+			hrmService.calcWages(wagesItem, sessionItem);
+			model.addAttribute("item", sessionItem);
 			model.addAttribute("index", index);
 			model.addAttribute(PayConstants.message, "信息已成功修改！");
 		} catch (Exception e) {

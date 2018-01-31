@@ -4,7 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.jx.projects.config.interceptor.RequestLogInterceptor;
 
 /**
  * @author  JX.Wu
@@ -19,6 +22,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 	    multipartResolver.setMaxUploadSize(20971520);   
 	    multipartResolver.setMaxInMemorySize(1048576);
 	    return multipartResolver;
+	}
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new RequestLogInterceptor());
 	}
 	
 }

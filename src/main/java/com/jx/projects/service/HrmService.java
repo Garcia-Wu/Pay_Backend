@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.List;
 
 import com.jx.projects.entiy.WagesItem;
-import com.jx.projects.util.PageWagesItem;
 
 /**
  * @author  JX.Wu
@@ -14,9 +13,9 @@ public interface HrmService {
 	
 	/** 导入excel 
 	 * @param in */
-	List<WagesItem> readExcel(InputStream in);
+	List<WagesItem> readExcel(InputStream in) throws Exception;
 
 	/** 计算工资 
 	 * @param pageWagesItem */
-	void calcWages(WagesItem wagesItem, PageWagesItem pageWagesItem);
+	void calcWages(WagesItem wagesItem, WagesItem sessionItem);
 }

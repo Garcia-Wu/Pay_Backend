@@ -130,10 +130,7 @@
 			<table class="table-condensed">
 					<tr>
 						<td style="padding-left: 5px">	
-							<a class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;新建</a>
-						    <a class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</a>
-						    <a href="javascript:readExcel();" class="btn btn-info"><span class="glyphicon glyphicon-save"></span>&nbsp;导入表格</a>
-						    <a class="btn btn-success"><span class="glyphicon glyphicon-open"></span>&nbsp;导出表格</a>
+							
 					 	</td>
 					</tr>
 					</tbody>
@@ -142,6 +139,12 @@
 		
  		<div class="panel panel-primary" style="padding-left: 10px;">
  			<div class="panel-heading" style="background-color: #11a9e2;">
+ 				<div class="btn-group" style="float: right">
+								<a class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span>&nbsp;新建</a>
+							    <a class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span>&nbsp;删除</a>
+							    <a href="javascript:readExcel();" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-save"></span>&nbsp;导入表格</a>
+							    <a class="btn btn-success btn-sm"><span class="glyphicon glyphicon-open"></span>&nbsp;导出表格</a>
+							</div>
 				<h3 class="panel-title">员工工资表</h3>
 			</div>
 			<div class="panel-body" >
@@ -203,7 +206,7 @@
 							<td id="dataTd">${stat.index + 1}</td>
 							<td id="dataTd">${wage.name}</td>
 							<td id="dataTd">${wage.job}</td>
-							<td id="dataTd"><fmt:formatDate value="${wage.entryTime}" pattern="yyyy/mm/dd"/></td>
+							<td id="dataTd"><fmt:formatDate value="${wage.entryTime}" pattern="yyyy/MM/dd"/></td>
 							<td id="dataTd"><c:if test="${wage.fullFrequentlyDay != 0.0}">${fn:replace(wage.fullFrequentlyDay+"",".0","")}</c:if></td>
 							<td id="dataTd"><c:if test="${wage.attendanceDay != 0.0}">${fn:replace(wage.attendanceDay+"",".0","")}</c:if></td>
 							<td id="dataTd"><c:if test="${wage.workOvertime != 0.0}">${wage.workOvertime}</c:if></td>
