@@ -1,34 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<c:set var="ctx" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html> 
 <html>
 <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>酷朗智能办公</title> 
+    <title>酷朗智能办公</title>    
 <link href="${ctx}/css/base.css" rel="stylesheet">
 <link href="${ctx}/css/platform.css" rel="stylesheet">
 <link href="${ctx}/images/favicon.ico" rel="Shortcut Icon">
-<link rel="stylesheet" href="${ctx}/resources/easyUI/easyui.css">
 <script type="text/javascript" src="${ctx}/resources/jquery/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/jquery/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/easyUI/jquery.easyui.min.js"></script>
-<script type="text/javascript"
-	src="${ctx}/resources/easyUI/easyui-lang-zh_CN.js"></script>
- <!-- <script type="text/javascript" src="js/menu.js"></script> -->
+<script type="text/javascript" src="${ctx}/resources/easyUI/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" href="${ctx}/resources/easyUI/easyui.css">
 <script type="text/javascript" src="${ctx}/js/main.js"></script>
 <script type="text/javascript" src="${ctx}/js/nowTime.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('#tt').tabs({
-		    	  tabHeight: 40,
-			      onSelect:function(title,index){
-			        var currentTab = $('#tt').tabs("getSelected");
-			        if(currentTab.find("iframe") && currentTab.find("iframe").size()){
-			            currentTab.find("iframe").attr("src",currentTab.find("iframe").attr("src"));
-			        }
-			      }
+	    	  tabHeight: 40,
+		      onSelect:function(title,index){
+		        var currentTab = $('#tt').tabs("getSelected");
+		        if(currentTab.find("iframe") && currentTab.find("iframe").size()){
+		            currentTab.find("iframe").attr("src",currentTab.find("iframe").attr("src"));
+		        }
+		      }
 		 });
 		
 		// 进行信息提示,js中使用EL表达式需使用双引号
@@ -67,75 +65,34 @@
     	}
 	}
 	   
-	    $(window).resize(function(){
-	          $('.tabs-panels').height($("#pf-page").height()-46);
-	          $('.panel-body').height($("#pf-page").height()-76);
-	    }).resize();
-
-	    var page = 0,
-	        pages = ($('.pf-nav').height() / 70) - 1;
-
-	    if(pages === 0){
-	      $('.pf-nav-prev,.pf-nav-next').hide();
-	    }
-	    $(document).on('click', '.pf-nav-prev,.pf-nav-next', function(){
-			    	
-	      if($(this).hasClass('disabled')) return;
-	      if($(this).hasClass('pf-nav-next')){
-	        page++;
-	        $('.pf-nav').stop().animate({'margin-top': -70*page}, 200);
-	        if(page == pages){
-	          $(this).addClass('disabled');
-	          $('.pf-nav-prev').removeClass('disabled');
-	        }else{
-	          $('.pf-nav-prev').removeClass('disabled');
-	        }
-	      }else{
-	        page--;
-	        $('.pf-nav').stop().animate({'margin-top': -70*page}, 200);
-	        if(page == 0){
-	          $(this).addClass('disabled');
-	          $('.pf-nav-next').removeClass('disabled');
-	        }else{
-	          $('.pf-nav-next').removeClass('disabled');
-	        }
-	        
-	      }
-	    })
-	    
 	    function exit(){
 	    	window.location="${ctx}/identity/user/logout";
 	    }
-	    
-	  
-	    </script>
-
+</script>
 </head> 
 <body>
     <div class="container">
         <div id="pf-hd">
-           <div class="pf-logo" style="padding-left: 40px">
-                <img  src="${ctx}/images/logo.png" height="70" width="200" alt="logo">
-           </div>
-            
-            <div class="pf-nav-wrap">
-              <div class="pf-nav-ww">
-              </div>
-                <ul class="pf-nav">
-	                  <li data-menu="sys-manage">
-	                      <font color="white"><br><br>当前时间：<span id="nowTime"></span></font>
-	                  </li>
-                </ul>
-
-            </div>
-            
-
+	        <div class="pf-logo" style="padding-left: 40px">
+	             <img  src="${ctx}/images/logo.png" height="70" width="200" alt="logo">
+	        </div>
+			<div class="pf-nav-wrap">
+			  <div class="pf-nav-ww">
+			  </div>
+			    <ul class="pf-nav">
+			       <li data-menu="sys-manage">
+			           <font color="white"><br><br>当前时间：<span id="nowTime"></span></font>
+			       </li>
+			    </ul>
+			</div>
 
             <div class="pf-user">
                 <div class="pf-user-photo">
-                    <img style="width: 40px;height: 40px;" src="${ctx}/images/main/jiuguang.jpg" alt="">
+                    <a href="http://payfile.oss-cn-shenzhen.aliyuncs.com/2018-01/31/superAdmin.jpg" target="_blank" title="点击放大图片">
+                    	<img style="width: 40px;height: 40px;" src="http://payfile.oss-cn-shenzhen.aliyuncs.com/2018-01/31/superAdmin.jpg" alt="X请检查网络连接">
+                    </a>
                 </div>
-                <h4 id="userName" class="pf-user-name ellipsis">${session_user.name}</h4>
+                <h4 id="userName" class="pf-user-name ellipsis">superAdmin${session_user.name}</h4>
                 <i class="iconfont xiala">&#xe607;</i>
 
                 <div class="pf-user-panel">
@@ -146,7 +103,7 @@
                                 <span class="pf-opt-name">用户信息</span>
                             </a>
                         </li>
-                        <li  id="exit">
+                        <li id="exit">
                             <a href="javascript:exit();">
                                 <i class="iconfont">&#xe60e;</i>
                                 <span class="pf-opt-name">退出</span>
@@ -168,13 +125,20 @@
 				<!-- 展示系统左侧权限树  -->
                 <ul class="sider-nav" id="sider-nav">
             	  	<li>
-                 	  	<a href="javascript:addPanel(1 ,'${ctx}/hrm/showCalcWages','薪资计算');">
+                 	  	<a href="javascript:addPanel(1 ,'${ctx}/wagesItem/showCalcWages','薪资计算');">
                             <span class="iconfont sider-nav-icon">&#xe611;</span>
                             <span class="sider-nav-title">薪资计算</span>
                             <i class="iconfont">&#xe642;</i>
                         </a>
                	  	</li>
-            	  	<li>
+               	  	<li>
+                 	  	<a href="javascript:addPanel(2 ,'${ctx}/company/showCompany','公司管理');" >
+                            <span class="iconfont sider-nav-icon">&#xe611;</span>
+                            <span class="sider-nav-title">公司管理</span>
+                            <i class="iconfont">&#xe642;</i>
+                        </a>
+               	  	</li>
+            	  	<%-- <li>
                  	  	<a href="javascript:;" >
                             <span class="iconfont sider-nav-icon">&#xe611;</span>
                             <span class="sider-nav-title">历史表格</span>
@@ -191,7 +155,7 @@
 		                    <li><a href="javascript:addPanel(31 ,'${seModule.url}','${seModule.name}');">用户管理</a></li>
 		                    <li><a href="javascript:addPanel(32 ,'${seModule.url}','${seModule.name}');">角色管理</a></li>
 		                </ul>
-               	  	</li>
+               	  	</li> --%>
                  </ul> 
             </div>
 

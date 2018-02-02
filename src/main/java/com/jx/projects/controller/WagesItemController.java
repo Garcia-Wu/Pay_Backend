@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jx.projects.entiy.WagesItem;
-import com.jx.projects.service.HrmService;
+import com.jx.projects.service.WagesItemService;
 import com.jx.projects.util.PayConstants;
 
 /**
@@ -23,16 +23,16 @@ import com.jx.projects.util.PayConstants;
  * @date  2018年1月9日
  */
 @Controller
-@RequestMapping("/hrm")
-public class HrmController {
+@RequestMapping("/wagesItem")
+public class WagesItemController {
 	
 	@Autowired
-	private HrmService hrmService;
+	private WagesItemService wagesItemService;
 	
 	/** 显示计算工资界面 */
 	@RequestMapping("/showCalcWages")
 	public String showCalcWages(Model model){
-		return "/hrm/calcWages";
+		return "/wagesItem/calcWages";
 	}
 	
 	/** 导入excel */
@@ -42,7 +42,7 @@ public class HrmController {
 			// 获取excel文件输入流
 			InputStream in = file.getInputStream();
 			// 封装至实体类集合
-			List<WagesItem> wagesItems = hrmService.readExcel(in);
+			List<WagesItem> wagesItems = wagesItemService.readExcel(in);
 			// 保存至session
 			session.setAttribute(PayConstants.session_wagesItem, wagesItems);
 			model.addAttribute(PayConstants.message, "导入Excel成功！");
@@ -50,7 +50,7 @@ public class HrmController {
 			e.printStackTrace();
 			model.addAttribute(PayConstants.message, "导入excel失败！");
 		}
-		return "/hrm/calcWages";
+		return "/wagesItem/calcWages";
 	}
 	
 	/** 显示修改信息界面 */
@@ -69,7 +69,7 @@ public class HrmController {
 			e.printStackTrace();
 			model.addAttribute(PayConstants.message, "加载数据失败！");
 		}
-		return "/hrm/updateWages";
+		return "/wagesItem/updateWages";
 	}
 	
 	/** 修改工资信息 */
@@ -80,7 +80,7 @@ public class HrmController {
 			// 从session集合中取出对应的对象
 			WagesItem sessionItem = wagesItems.get(Integer.valueOf(index));
 			// 获取信息，进行计算工资
-			hrmService.calcWages(wagesItem, sessionItem);
+			wagesItemService.calcWages(wagesItem, sessionItem);
 			model.addAttribute("item", sessionItem);
 			model.addAttribute("index", index);
 			model.addAttribute(PayConstants.message, "信息已成功修改！");
@@ -88,6 +88,6 @@ public class HrmController {
 			e.printStackTrace();
 			model.addAttribute(PayConstants.message, e.getMessage());
 		}
-		return "/hrm/updateWages";
+		return "/wagesItem/updateWages";
 	}
 }

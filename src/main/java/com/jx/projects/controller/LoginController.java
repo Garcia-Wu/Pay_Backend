@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 
-	@RequestMapping("/main")
+	@RequestMapping(value={"/","/main"})
 	public String getMain(){
 		return "main";
 	}

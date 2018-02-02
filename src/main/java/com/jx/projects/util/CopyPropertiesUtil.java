@@ -9,7 +9,7 @@ import org.springframework.util.Assert;
  * @author  JX.Wu
  * @date  2018年1月31日
  */
-public class PayCopyProperties {
+public class CopyPropertiesUtil {
 	
 	/**
 	 * 若source对象有相应属性且不为空, 则赋给target

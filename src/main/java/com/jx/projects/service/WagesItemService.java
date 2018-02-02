@@ -9,7 +9,7 @@ import com.jx.projects.entiy.WagesItem;
  * @author  JX.Wu
  * @date  2018年1月30日
  */
-public interface HrmService {
+public interface WagesItemService {
 	
 	/** 导入excel 
 	 * @param in */

@@ -7,19 +7,19 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.jx.projects.entiy.WagesItem;
-import com.jx.projects.service.HrmService;
+import com.jx.projects.service.WagesItemService;
 import com.jx.projects.util.CalcWagesUtils;
 import com.jx.projects.util.ExcelUtils;
 import com.jx.projects.util.PayConstants;
-import com.jx.projects.util.PayCopyProperties;
+import com.jx.projects.util.CopyPropertiesUtil;
 import com.jx.projects.util.PayException;
 
 /**
  * @author  JX.Wu
  * @date  2018年1月30日
  */
-@Service("HrmService")
-public class HrmServiceImpl implements HrmService{
+@Service("WagesItemService")
+public class WagesItemServiceImpl implements WagesItemService{
 	
 	/** 导入excel 
 	 * @throws Exception */
@@ -35,7 +35,7 @@ public class HrmServiceImpl implements HrmService{
 	@Override
 	public void calcWages(WagesItem wagesItem, WagesItem sesssionItem) {
 		try {
-			PayCopyProperties.CopyProperties(wagesItem, sesssionItem);
+			CopyPropertiesUtil.CopyProperties(wagesItem, sesssionItem);
 			// 工资计算
 			CalcWagesUtils.calcWages(sesssionItem);
 		} catch (Exception e) {

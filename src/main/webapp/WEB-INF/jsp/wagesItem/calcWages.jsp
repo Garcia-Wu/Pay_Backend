@@ -98,11 +98,11 @@
 					resizable : true, // 是否可伸缩
 					modal : true, // 模态窗口
 					onClose : function() { // 关闭窗口
-						window.location = "${ctx}/hrm/showCalcWages"; //关闭url
+						window.location = "${ctx}/wagesItem/showCalcWages"; //关闭url
 					}
 				});
 
-			  	top.$("#iframe").attr("src", "${ctx}/hrm/showUpdateWages?trId="+this.id).show();
+			  	top.$("#iframe").attr("src", "${ctx}/wagesItem/showUpdateWages?trId="+this.id).show();
 		  })
      })
      
@@ -249,7 +249,7 @@
 					submitUrl="${ctx}/identity/user/selectUser.jspx?pageIndex={0}&name=${user.name}&phone=${user.phone}&dept.id=${user.dept.id}&job.code=${user.job.code}" /> --%>
 		</div>
 		
-		<form id="getExcelForm" method="post" action="${ctx}/hrm/getExcel" enctype="multipart/form-data" style="display: none;">
+		<form id="getExcelForm" method="post" action="${ctx}/wagesItem/getExcel" enctype="multipart/form-data" style="display: none;">
 			<input type="file" id="file" name="fileName" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onchange="javascript:$('#getExcelForm').submit();"/>
 		</form>
 	

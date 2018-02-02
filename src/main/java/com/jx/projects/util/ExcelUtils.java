@@ -136,7 +136,7 @@ public class ExcelUtils {
 			}else if(Date.class.equals(paramType)){
 				contents = "20" + contents;
 				// 使用常量类定义的时间格式
-				setMethod.invoke(obj, PayConstants.sdf.parse(contents));
+				setMethod.invoke(obj, PayConstants.EXCELSDF.parse(contents));
 			}else if(byte.class.equals(paramType) || Byte.class.equals(paramType)){
 				// 数据类型去除逗号
 				contents = contents.replaceAll(",", "");

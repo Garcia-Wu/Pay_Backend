@@ -10,10 +10,16 @@ public class PayConstants {
 	public static final String message = "message";
 	
 	/** 读取excel的日期格式 */
-	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	
+	public static final SimpleDateFormat EXCELSDF = new SimpleDateFormat("yyyy-MM-dd");
 	
 	/** 保存在session中的工资集合(导入的excel) */
 	public static final String session_wagesItem = "wagesItems";
+	
+	public static final String filePrefix = "http://payfile.oss-cn-shenzhen.aliyuncs.com/";
+	
+	public static final Integer ACTIVESTATUS = 0;
 	
 	/** 获取表头信息对应属性的map集合 */
 	public static Map<String, String> getHeaderMap(){

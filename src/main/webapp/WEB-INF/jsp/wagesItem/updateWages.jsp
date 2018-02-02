@@ -79,7 +79,7 @@
 </head>
 <body style="background: #F5FAFA;">
 	<center>
-		<form id="updateUserForm" action="${ctx}/hrm/updateWages?index=${index}"
+		<form id="updateUserForm" action="${ctx}/wagesItem/updateWages?index=${index}"
 			method="post">
 			<table class="table-condensed">
 				<tbody>
